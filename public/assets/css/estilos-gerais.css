@@ -1,0 +1,73 @@
+/*CONFIGURAÇÕES INICIAIS*/
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    outline: none;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    overflow-x: hidden;
+}
+
+/*HEADER*/
+header {
+  background-color: #E1A493;
+}
+
+.container {
+  width: 80%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.title img{
+    width: 30%;
+    padding: 1%;
+}
+
+.navegacao {
+  width: 350px;
+  color: #FFFF;
+}
+
+.navegacao ul {
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+}
+
+.navegacao a {
+  color: #FFFF;
+  text-decoration: none;
+}
+
+.navegacao ul li {
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.now {
+  font-weight: bold;
+}
+
+/*RODAPÉ/FOOTER*/
+
+footer {
+  padding: 45px 0;
+  background-color: #E1A493;
+}
+
+footer .container {
+  justify-content: center;
+}
+
+footer p {
+  color: #fff;
+}

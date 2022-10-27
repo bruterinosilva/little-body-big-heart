@@ -1,0 +1,63 @@
+.banner {
+    background-color: #8ECFD7;
+}
+
+.banner .container {
+    display: flex;
+    /* height: 520px; */
+    align-items: center;
+    justify-content: space-around;
+    position: relative;
+}
+
+.inicial {
+    display: flex;
+}
+
+.img-melanie-inicial img {
+    width: 30%;
+}
+
+.banner h1 {
+    /* width: 280px; */
+    color: #fff;
+    font-size: 65px;
+    ;
+}
+
+.banner p {
+    width: 460px;
+    color: #fff;
+    font-size: 35px;
+}
+
+.img-seta {
+    width: 5%;
+}
+
+.banner .container a {
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    text-align: center;
+    /* bottom: 50px; */
+    margin-top: 37%;
+    cursor: pointer;
+    animation: bounce infinite linear 2s;
+}
+
+@keyframes bounce {
+    0% {
+        top: 20px
+    }
+
+    50% {
+        top: 40px
+    }
+
+    100% {
+        top: 20px
+    }
+}
