@@ -1,0 +1,64 @@
+.banner {
+    background-image: url("../img/melanie-background.jpg");
+    padding: 100px 0;
+    background-size: cover;
+    height: 95vh;
+}
+
+.banner .container {
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+.caixa-formulario {
+    background-color: #E5E5E5;
+    padding: 20px 100px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.caixa-formulario h2 {
+    color: #A9354B;
+    margin-bottom: 20px;
+}
+
+.campo {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+.campo label {
+    color: #E1A493;
+    font-size: 18px;
+    padding: 10px 0;
+    font-weight: bold;
+}
+
+.campo input {
+    padding: 10px;
+    border-radius: 10px;
+    border: 2px solid #A9354B;
+}
+
+.caixa-formulario button {
+    margin-top: 20px;
+    width: 120px;
+    color: #FFF;
+    background-color: #A9354B;
+    padding: 10px 20px;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: 'Poppins', sans-serif;
+}
+
+.caixa-formulario button:hover {
+    opacity: 0.8;
+}
