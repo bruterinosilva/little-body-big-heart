@@ -1,0 +1,26 @@
+main {
+  padding: 8%;
+  background-color: #8ECFD7;
+}
+
+.game {
+    width: 600px;
+	height: 600px;
+	margin: 0 auto;
+    background-color: #E1A493;
+    color: #fff;
+    border: 6px solid #8ECFD7;
+    border-radius: 10px;
+	display: grid;
+	grid-template: repeat(3, 1fr) / repeat(3, 1fr);
+}
+
+.game > div {
+  border: 6px solid #8ECFD7;
+  border-radius: 2px;
+  font-weight: bold;
+  font-size: 4em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

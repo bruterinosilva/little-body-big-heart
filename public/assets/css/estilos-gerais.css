@@ -60,14 +60,13 @@ header {
 /*RODAPÉ/FOOTER*/
 
 footer {
-  padding: 45px 0;
+  padding: 15px 0;
   background-color: #E1A493;
+  text-align: center;
 }
 
-footer .container {
-  justify-content: center;
-}
-
-footer p {
+footer h6 {
   color: #fff;
+  font-size: 12px;
+  font-weight: lighter;
 }
