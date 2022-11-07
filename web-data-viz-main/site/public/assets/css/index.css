@@ -196,11 +196,19 @@
     /* justify-content: flex-end; */
     display: flex;
     /* width: 50%; */
+    align-items: center;
+    margin-bottom: 20px;
+    margin-left: 60px;
+}
 
+.secundaria4 {
+    margin-left: 115px;
+    
 }
 
 .secundaria4 img {
-    height: 10%;
+    height: 100px;
+    
 }
 
 .banner4 h5 {
@@ -208,4 +216,9 @@
     color: #FFF;
     margin-top: 20%;
     padding: 0 75px 0%;
+    margin-bottom: 30px;
+}
+
+.social p {
+    margin-left: 30px;
 }

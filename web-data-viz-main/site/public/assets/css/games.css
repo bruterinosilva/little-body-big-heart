@@ -1,0 +1,29 @@
+.banner {
+    background-color: #8ECFD7;
+}
+
+.container1 {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 100vh;
+}
+
+.bloco {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.inicial h1 {
+    font-size: 50px;
+    color: #FFF;
+}
+
+.icons img {
+    width: 150px;
+}
+
+.text {
+    margin-left: 30px;
+}
