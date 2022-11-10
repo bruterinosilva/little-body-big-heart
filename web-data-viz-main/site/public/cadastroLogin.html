@@ -29,10 +29,13 @@
     </header>
     <section>
         <main>
-            
             <body>
                 <div class="banner">
-
+                    <div class="alerta_erro">
+                        <div class="card_erro" id="cardErro">
+                            <span id="mensagem_erro"></span>
+                        </div>
+                    </div>
                     <div class="container-principal">
                         <div class="content first-content">
                             <div class="first-column">
@@ -44,22 +47,28 @@
                             <div class="second-column">
                                 <h2 class="title title-second">Ou crie sua conta</h2>
                         <p class="description description-second">use seu e-mail para se cadastrar</p>
-                        <form class="form">
+                        <!-- <form class="form"> -->
                             <label class="label-input" for="">
-                                <input type="text" placeholder="Seu nome">
+                                <input type="text" placeholder="Seu nome" id="input_nome">
                             </label>
                             
                             <label class="label-input" for="">
-                                <input type="email" placeholder="Seu e-mail">
+                                <input type="email" placeholder="Seu e-mail" id="input_email">
                             </label>
                             
                             <label class="label-input" for="">
-                                <input type="password" placeholder="Sua senha">
+                                <input type="password" placeholder="Sua senha" id="input_senha">
+                            </label>
+
+                            
+                            <label class="label-input" for="">
+                                <input type="password" placeholder="Confirme sua senha" id="input_confirmacao_senha">
                             </label>
                             
                             
-                            <button class="btn btn-second" onclick="cadastrar()">Cadastrar</button>
-                        </form>
+                            <button class="btn btn-second" type="button" onclick="cadastrar()">Cadastrar</button>
+                            <div id="div_erros_login">
+                        <!-- </form> -->
                     </div><!-- second column -->
                 </div><!-- first content -->
                 <div class="content second-content">
@@ -75,11 +84,11 @@
                         <form class="form">
                             
                             <label class="label-input" for="">
-                                <input type="email" placeholder="Seu e-mail">
+                                <input type="email" placeholder="Seu e-mail" id="input_email">
                             </label>
                             
                             <label class="label-input" for="">
-                                <input type="password" placeholder="Sua senha">
+                                <input type="password" placeholder="Sua senha" id="input_senha">
                             </label>
                             
                             <a class="password" href="#">esqueceu sua senha?</a>
@@ -89,6 +98,7 @@
                 </div><!-- second-content -->
             </div>
         </div>
+        <div id="mensagem_erro"></div>
         </section>
         <footer>
             <h6>Melanie Martinez &copy; 2022. Todos os direitos reservados.</h6>
@@ -98,5 +108,103 @@
         <script src="./assets/js/cadastroLogin.js"></script>
         <script src="../src/controllers/usuarioController.js"></script>
     </body>
-    
     </html>
+    <script>
+         function cadastrar() {
+        // aguardar();
+
+        //Recupere o valor da nova input pelo nome do id
+        // Agora vá para o método fetch logo abaixo
+        var nomeVar = input_nome.value;
+        var emailVar = input_email.value;
+        var senhaVar = input_senha.value;
+        var confirmacaoVar = input_confirmacao_senha.value;
+
+        if (nomeVar == "" || emailVar == "" || senhaVar == "") {
+            // cardErro.style.display = "block"
+            mensagem_erro.innerHTML = "Por favor, preencha todos os campos para prosseguir.";
+
+            finalizarAguardar();
+            return false;
+        } else {
+            setInterval(sumirMensagem, 5000)
+        }
+        // if (emailVar.indexOf('@') == -1 || emailVar.indexOf('.com') == -1) {
+        //     //cardErro.style.display = 'block'
+        //     mensagem_erro.innerHTML =
+        //         'Ops, e-mail inválido! Por favor, insira tente novamente.'
+        //     finalizarAguardar()
+        //     return false
+        // } else {
+        //     setInterval(sumirMensagem, 5000)
+        // }
+
+        if (senhaVar != confirmacaoVar) {
+            //cardErro.style.display = 'block'
+            mensagem_erro.innerHTML =
+                'As senhas inseridas não coincidem!'
+            finalizarAguardar()
+            return false
+        } else {
+            setInterval(sumirMensagem, 5000)
+        }
+
+
+        // Enviando o valor da nova input
+        fetch("/usuarios/cadastrar", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                // crie um atributo que recebe o valor recuperado aqui
+                // Agora vá para o arquivo routes/usuario.js
+                nomeServer: nomeVar,
+                emailServer: emailVar,
+                senhaServer: senhaVar,
+            })
+        }).then(function (resposta) {
+
+            console.log("resposta: ", resposta);
+
+            if (resposta.ok) {
+                // cardErro.style.display = "block";
+
+                mensagem_erro.innerHTML = "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
+
+                window.location = "./cadastroLogin.html";
+                setTimeout(() => {
+                }, "2000")
+
+                limparFormulario();
+                finalizarAguardar();
+            } else {
+                throw ("Houve um erro ao tentar realizar o cadastro!");
+            }
+        }).catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+            finalizarAguardar();
+        });
+
+        return false;
+    }
+
+    function aguardar() {
+    var divAguardar = document.getElementById('div_aguardar')
+    // divAguardar.style.display = 'flex'
+  }
+
+  function finalizarAguardar(texto) {
+    var divAguardar = document.getElementById('div_aguardar')
+    // divAguardar.style.display = 'none'
+
+    var divErrosLogin = document.getElementById('div_erros_login')
+    if (texto) {
+      divErrosLogin.innerHTML = texto
+    }
+  }
+
+    function sumirMensagem() {
+        // cardErro.style.display = "none"
+    }
+    </script>
