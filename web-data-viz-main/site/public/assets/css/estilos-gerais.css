@@ -15,7 +15,7 @@ body {
 
 /*HEADER*/
 header {
-  background-color: #E1A493;
+  background-color: #B15C4E;
 }
 
 .container {
@@ -34,7 +34,7 @@ header {
 
 .navegacao {
   width: 350px;
-  color: #FFFF;
+  
 }
 
 .navegacao ul {
@@ -61,7 +61,7 @@ header {
 
 footer {
   padding: 15px 0;
-  background-color: #A9354B;
+  background-color: #B15C4E;
   text-align: center;
 }
 

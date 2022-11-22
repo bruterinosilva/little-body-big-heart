@@ -1,8 +1,8 @@
-var sailor1 = 0
-var sailor2 = 0
-var sailor3 = 0
-var sailor4 = 0
-var sailor5 = 0
+var Option1 = 0
+var Option2 = 0
+var Option3 = 0
+var Option4 = 0
+var Option5 = 0
 var contador = 1
 
 function startQuiz() {
@@ -14,24 +14,24 @@ function startQuiz() {
 }
 
 
-function addSailor1() {
-    sailor1++
+function addOption1() {
+    Option1++
     responder()
 }
-function addSailor2() {
-    sailor2++
+function addOption2() {
+    Option2++
     responder()
 }
-function addSailor3() {
-    sailor3++
+function addOption3() {
+    Option3++
     responder()
 }
-function addSailor4() {
-    sailor4++
+function addOption4() {
+    Option4++
     responder()
 }
-function addSailor5() {
-    sailor5++
+function addOption5() {
+    Option5++
     responder()
 }
 
@@ -56,16 +56,12 @@ function responder() {
         quiz.innerHTML = 
         `
             <div class="quizResult">
-                <h2 class="final">Teste finalizado</h2>
+                <h2 class="final">Votação finalizada</h2>
                 <p>Clique no botão abaixo para exibir os resultados</p>
                 <button class="finalizar" onclick="results()">Mostrar resultados</button>
             </div>
         `
     }
-
-
-
-
 }
 
 function results() {
@@ -74,11 +70,11 @@ function results() {
             <div class="resultsBox">
                 <h2 class="resultado">Resultado</h2>
                 <div class="metricasBox">
-                    <button value="${sailor1}" id="sailor1" class="metricas moon">Sailor Moon: <br> ${sailor1}</button>
-                    <button value="${sailor2}" id="sailor2" class="metricas mercury">Sailor Mercury: <br>${sailor2}</button>
-                    <button value="${sailor3}" id="sailor3" class="metricas marte">Sailor Marte: <br>${sailor3}</button>
-                    <button value="${sailor4}" id="sailor4" class="metricas jupiter">Sailor Júpiter: <br>${sailor4}</button>
-                    <button value="${sailor5}" id="sailor5" class="metricas venus">Sailor Vênus: <br>${sailor5}</button>
+                    <button value="${Option1}" id="Option1" class="metricas dollhouse">Dollhouse EP <br> ${Option1}</button>
+                    <button value="${Option2}" id="Option2" class="metricas crybaby">Cry Baby Album <br>${Option2}</button>
+                    <button value="${Option3}" id="Option3" class="metricas extra clutter">Cry Baby Extra Clutter EP <br>${Option3}</button>
+                    <button value="${Option4}" id="Option4" class="metricas k12">K-12 Album <br>${Option4}</button>
+                    <button value="${Option5}" id="Option5" class="metricas after school">After School EP: <br>${Option5}</button>
         
                 </div>
             </div>
@@ -97,11 +93,11 @@ function results() {
             body: JSON.stringify({
                 // crie um atributo que recebe o valor recuperado aqui
                 // Agora vá para o arquivo routes/usuario.js
-                sailor1: sailor1,
-                sailor2: sailor2,
-                sailor3: sailor3,
-                sailor4: sailor4,
-                sailor5: sailor5,
+                Option1: Option1,
+                Option2: Option2,
+                Option3: Option3,
+                Option4: Option4,
+                Option5: Option5,
             })
         }).then(function (resposta) {
 
@@ -117,18 +113,18 @@ function results() {
         });
 
         const labels = [
-            'Sailor Moon',
-            'Sailor Mercury',
-            'Sailor Mars',
-            'Sailor Jupiter',
-            'Sailor Venus',
+            'Dollhouse',
+            'Cry Baby',
+            'Cry Baby Extra Clutter',
+            'K-12',
+            'After School',
     
         ];
     
         const data = {
             labels: labels,
             datasets: [{
-                label: 'Pontos',
+                label: 'Quantidade de votos',
                 backgroundColor: [
                 'rgb(255, 74, 158)',
                 'rgb(85, 85, 255)',
@@ -137,7 +133,7 @@ function results() {
                 'rgb(255, 117, 37)',
             ],
                 borderColor: 'rgb(255, 99, 132)',
-                data: [sailor1, sailor2, sailor3, sailor4, sailor5],
+                data: [Option1, Option2, Option3, Option4, Option5],
             },
         ]
         };

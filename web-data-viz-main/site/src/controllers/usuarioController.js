@@ -60,13 +60,11 @@ function entrar(req, res) {
 
 }
 
-function cadastrar(req, res, event) {
+function cadastrar(req, res) {
     // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
-    event.preventDefault()
     var nome = req.body.nomeServer;
     var email = req.body.emailServer;
     var senha = req.body.senhaServer;
-    var confirmacao = req.body.confirmacaoServer;
     console.log(nome);
 
     // Faça as validações dos valores

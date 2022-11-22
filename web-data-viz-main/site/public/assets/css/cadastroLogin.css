@@ -13,7 +13,7 @@ main {
 .content {
     background-color: #fff;
     border-radius: 15px;
-    width: 960px;
+    width: 870px;
     height: 65%;
     justify-content: space-between;
     align-items: center;
@@ -176,8 +176,6 @@ main {
 .password::first-letter {
     text-transform: capitalize;
 }
-
-
 
 .sign-in-js .first-content .first-column {
     z-index: -1;

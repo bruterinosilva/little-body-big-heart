@@ -22,7 +22,7 @@
                     <li><a href="">A artista</a></li>
                     <li><a href="games.html">Games</a></li>
                     <li><a href="sobreMim.html">Sobre mim</a></li>
-                    <li class="now"><a href="cadastroLogin.html">Entrar</a></li>
+                    <li class="now"><a href="Cadastrologin.html">Entrar</a></li>
                 </ul>
             </div>
         </div>
@@ -36,87 +36,92 @@
                             <span id="mensagem_erro"></span>
                         </div>
                     </div>
-                    <div class="container">
+                    <div class="container-principal">
                         <div class="content first-content">
                             <div class="first-column">
-                                <h2 class="title title-primary">Já é um membro?</h2>
-                                <p class="description description-primary">Faça seu login</p>
-                        
+                                <h2 class="title title-primary">Bem-vindo de volta!</h2>
+                                <p class="description description-primary">Para continuar conectado conosco</p>
+                                <p class="description description-primary">faça seu login</p>
                                 <button id="signin" class="btn btn-primary">Entrar</button>
-                            </div>    
-                            <div class="second-column">
-                                <h2 class="title title-second">Crie sua conta!</h2>                
-                                <form class="form">
-                                    <label class="label-input" for="">
-                                        <input type="text" placeholder="Nome" id="input_cadastro_nome">
-                                    </label>
-                                    
-                                    <label class="label-input" for="">
-                                        <input type="email" placeholder="Email" id="input_cadastro_email">
-                                    </label>
-                                    
-                                    <label class="label-input" for="">
-                                        <input type="password" placeholder="Senha" id="input_cadastro_senha">
-                                    </label>
-
-                                    <label class="label-input" for="">
-                                        <input type="password" placeholder=" Confirmação de Senha" id="input_cadastro_confirmacao_senha">
-                                    </label>
-                                    
-                                    
-                                    <input class="btn btn-second" onclick="cadastrar()" type="submit" value="Cadastrar">       
-                                </form>
-                            </div><!-- second column -->
-                        </div><!-- first content -->
-                        <div class="content second-content">
-                            <div class="first-column">
-                                <h2 class="title title-primary">Ainda não é membro?</h2>
-                                <p class="description description-primary">Insira seus dados e cadastre-se!</p>
-                                
-                                <button id="signup" class="btn btn-primary">Cadastrar</button>
                             </div>
                             <div class="second-column">
-                                <h2 class="title title-second">Faça seu login!</h2>
-        
-                                <form class="form">
-                                
-                                    <label class="label-input" for="">
-                                        <i class="far fa-envelope icon-modify"></i>
-                                        <input type="email" placeholder="Email" id="input_login_email">
-                                    </label>
-                                
-                                    <label class="label-input" for="">
-                                        <i class="fas fa-lock icon-modify"></i>
-                                        <input type="password" placeholder="Senha" id="input_login_senha">
-                                    </label>
-                                
-                                    <a class="password" href="#">Esqueceu sua senha?</a>
-                                    <button class="btn btn-second" onclick="entrar()">Entrar</button>
-                                </form>
-                            </div><!-- second column -->
-                        </div><!-- second-content -->
-                    </div>
-                    <script src="./assets/js/cadastroLogin.js"></script>
-</body>
+                                <h2 class="title title-second">Ou crie sua conta</h2>
+                        <p class="description description-second">use seu e-mail para se cadastrar</p>
+                        <form class="form">
+                            <label class="label-input" for="">
+                                <input type="text" placeholder="Seu nome" id="input_nome">
+                            </label>
+                            
+                            <label class="label-input" for="">
+                                <input type="email" placeholder="Seu e-mail" id="input_email">
+                            </label>
+                            
+                            <label class="label-input" for="">
+                                <input type="password" placeholder="Sua senha" id="input_senha">
+                            </label>
 
-</html>
-<script>
-    function cadastrar() {
-        aguardar();
-       
+                            
+                            <label class="label-input" for="">
+                                <input type="password" placeholder="Confirme sua senha" id="input_confirmacao_senha">
+                            </label>
+                            
+                            
+                            <button class="btn btn-second" type="button" onclick="cadastrar()">Cadastrar</button>
+                            <div id="div_erros_login">
+                        </form>
+                    </div><!-- second column -->
+                </div><!-- first content -->
+                <div class="content second-content">
+                    <div class="first-column">
+                        <h2 class="title title-primary">Olá, amigo (a)</h2>
+                        <p class="description description-primary">Insira seus dados</p>
+                        <p class="description description-primary">e comece a sua jornada conosco</p>
+                        <button id="signup" class="btn btn-primary">Cadastrar</button>
+                    </div>
+                    <div class="second-column">
+                        <h2 class="title title-second">Acesse sua conta</h2>
+                        <p class="description description-second">use seu e-mail para fazer login:</p>
+                        <form class="form">
+                            
+                            <label class="label-input" for="">
+                                <input type="email" placeholder="Seu e-mail" id="input_email">
+                            </label>
+                            
+                            <label class="label-input" for="">
+                                <input type="password" placeholder="Sua senha" id="input_senha">
+                            </label>
+                            
+                            <a class="password" href="#">esqueceu sua senha?</a>
+                            <button class="btn btn-second" onclick="entrar()">Entrar</button>
+                        </form>
+                    </div><!-- second column -->
+                </div><!-- second-content -->
+            </div>
+        </div>
+        <div id="mensagem_erro"></div>
+        </section>
+        <footer>
+            <h6>Melanie Martinez &copy; 2022. Todos os direitos reservados.</h6>
+            <h6>Desenvolvido por <b>Bruna Silva</b></h6>
+        </footer>
+        </main>
+        <script src="./assets/js/cadastroLogin.js"></script>
+        <script src="../src/controllers/usuarioController.js"></script>
+    </body>
+    </html>
+    <script>
+         function cadastrar() {
+        // aguardar();
 
         //Recupere o valor da nova input pelo nome do id
         // Agora vá para o método fetch logo abaixo
-        var nomeVar = input_cadastro_nome.value;
-        
-        var emailVar = input_cadastro_email.value;
-    
-        var senhaVar = input_cadastro_senha.value;
+        var nomeVar = input_nome.value;
+        var emailVar = input_email.value;
+        var senhaVar = input_senha.value;
+        var confirmacaoVar = input_confirmacao_senha.value;
 
-        var confirmacaoVar = input_cadastro_confirmacao_senha.value;
-
-        if (nomeVar == "" || emailVar == "" || senhaVar == "" || confirmacaoVar == "") {
-            cardErro.style.display = "block"
+        if (nomeVar == "" || emailVar == "" || senhaVar == "") {
+            // cardErro.style.display = "block"
             mensagem_erro.innerHTML = "Por favor, preencha todos os campos para prosseguir.";
 
             finalizarAguardar();
@@ -124,15 +129,15 @@
         } else {
             setInterval(sumirMensagem, 5000)
         }
-        if (emailVar.indexOf('@') == -1 || emailVar.indexOf('.com') == -1) {
-            //cardErro.style.display = 'block'
-            mensagem_erro.innerHTML =
-                'Ops, e-mail inválido! Por favor, insira tente novamente.'
-            finalizarAguardar()
-            return false
-        } else {
-            setInterval(sumirMensagem, 5000)
-        }
+        // if (emailVar.indexOf('@') == -1 || emailVar.indexOf('.com') == -1) {
+        //     //cardErro.style.display = 'block'
+        //     mensagem_erro.innerHTML =
+        //         'Ops, e-mail inválido! Por favor, insira tente novamente.'
+        //     finalizarAguardar()
+        //     return false
+        // } else {
+        //     setInterval(sumirMensagem, 5000)
+        // }
 
         if (senhaVar != confirmacaoVar) {
             //cardErro.style.display = 'block'
@@ -144,9 +149,8 @@
             setInterval(sumirMensagem, 5000)
         }
 
-console.log('batata');
-        // Enviando o valor da nova input
 
+        // Enviando o valor da nova input
         fetch("/usuarios/cadastrar", {
             method: "POST",
             headers: {
@@ -164,11 +168,11 @@ console.log('batata');
             console.log("resposta: ", resposta);
 
             if (resposta.ok) {
-                cardErro.style.display = "block";
+                // cardErro.style.display = "block";
 
                 mensagem_erro.innerHTML = "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
 
-                window.location = "cadastroLogin.html";
+                window.location = "./cadastroLogin.html";
                 setTimeout(() => {
                 }, "2000")
 
@@ -187,12 +191,12 @@ console.log('batata');
 
     function aguardar() {
     var divAguardar = document.getElementById('div_aguardar')
-    divAguardar.style.display = 'flex'
+    // divAguardar.style.display = 'flex'
   }
 
   function finalizarAguardar(texto) {
     var divAguardar = document.getElementById('div_aguardar')
-    divAguardar.style.display = 'none'
+    // divAguardar.style.display = 'none'
 
     var divErrosLogin = document.getElementById('div_erros_login')
     if (texto) {
@@ -201,18 +205,18 @@ console.log('batata');
   }
 
     function sumirMensagem() {
-        cardErro.style.display = "none"
+        // cardErro.style.display = "none"
     }
 
     function entrar() {
-        // aguardar();
+        aguardar();
 
-        var emailVar = input_login_email.value;
-        var senhaVar = input_login_senha.value;
+        var emailVar = email_input.value;
+        var senhaVar = senha_input.value;
 
         if (emailVar == "" || senhaVar == "") {
             cardErro.style.display = "block"
-            mensagem_erro.innerHTML = "Mensagem de erro para todos os campos em branco";
+            mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
             finalizarAguardar();
             return false;
         }
@@ -244,10 +248,10 @@ console.log('batata');
 
                     sessionStorage.EMAIL_USUARIO = json.email;
                     sessionStorage.NOME_USUARIO = json.nome;
-                    sessionStorage.ID_USUARIO = json.idUsuario;
+                    sessionStorage.ID_USUARIO = json.id;
 
                     setTimeout(function () {
-                    window.location = "./posts/mural.html";
+                        window.location = "./dashboard/cards.html";
                     }, 1000); // apenas para exibir o loading
 
                 });
@@ -273,4 +277,4 @@ console.log('batata');
         cardErro.style.display = "none"
     }
 
-</script>
+    </script>
