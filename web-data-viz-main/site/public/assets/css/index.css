@@ -222,3 +222,20 @@
 .social p {
     margin-left: 30px;
 }
+
+.banner-enquete {
+    background-color: #8ECFD7;
+}
+
+.banner-enquete .pergunta_box a {
+    cursor: pointer;
+}
+
+.pergunta_box {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.banner-enquete .pergunta_box_btn img {
+    height: 80px;
+}
