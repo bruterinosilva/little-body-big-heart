@@ -64,7 +64,7 @@
                                     </label>
                                     
                                     
-                                    <input class="btn btn-second" onclick="cadastrar()" type="submit" value="Cadastrar">       
+                                    <button class="btn btn-second" id="btnCadastro" onclick="cadastrar()" type="button">Cadastrar</button>     
                                 </form>
                             </div><!-- second column -->
                         </div><!-- first content -->
@@ -91,7 +91,7 @@
                                     </label>
                                 
                                     <a class="password" href="#">Esqueceu sua senha?</a>
-                                    <button class="btn btn-second" onclick="entrar()">Entrar</button>
+                                    <button class="btn btn-second" onclick="entrar()" type="button">Entrar</button>
                                 </form>
                             </div><!-- second column -->
                         </div><!-- second-content -->
@@ -186,18 +186,18 @@ console.log('batata');
     }
 
     function aguardar() {
-    var divAguardar = document.getElementById('div_aguardar')
-    divAguardar.style.display = 'flex'
+    // var divAguardar = document.getElementById('div_aguardar')
+    // divAguardar.style.display = 'flex'
   }
 
   function finalizarAguardar(texto) {
-    var divAguardar = document.getElementById('div_aguardar')
-    divAguardar.style.display = 'none'
+    // var divAguardar = document.getElementById('div_aguardar')
+    // divAguardar.style.display = 'none'
 
-    var divErrosLogin = document.getElementById('div_erros_login')
-    if (texto) {
-      divErrosLogin.innerHTML = texto
-    }
+    // var divErrosLogin = document.getElementById('div_erros_login')
+    // if (texto) {
+    //   divErrosLogin.innerHTML = texto
+    // }
   }
 
     function sumirMensagem() {
@@ -247,7 +247,7 @@ console.log('batata');
                     sessionStorage.ID_USUARIO = json.idUsuario;
 
                     setTimeout(function () {
-                    window.location = "./posts/mural.html";
+                    window.location = "games.html";
                     }, 1000); // apenas para exibir o loading
 
                 });

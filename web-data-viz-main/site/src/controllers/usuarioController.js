@@ -95,9 +95,35 @@ function cadastrar(req, res) {
     }
 }
 
+function inserir_quiz(req, res) {
+    var sailor1 = req.body.sailor1;
+    var sailor2 = req.body.sailor2;
+    var sailor3 = req.body.sailor3;
+    var sailor4 = req.body.sailor4;
+    var sailor5 = req.body.sailor5;
+
+    // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
+    usuarioModel.insert_quiz(sailor1, sailor2, sailor3, sailor4, sailor5)
+    .then(
+        function (resultado) {
+            res.json(resultado);
+            }
+        ).catch(
+            function (erro) {
+                console.log(erro);
+                console.log(
+                    "\nHouve um erro ao realizar o cadastro! Erro: ",
+                    erro.sqlMessage
+                );
+                res.status(500).json(erro.sqlMessage);
+            }
+        );
+}
+
 module.exports = {
     entrar,
     cadastrar,
     listar,
-    testar
+    testar,
+    inserir_quiz
 }

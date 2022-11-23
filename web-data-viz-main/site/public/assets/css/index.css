@@ -175,7 +175,7 @@
 
 .banner4 {
     display: flex;
-    background-color: #E1A493;
+    background-color: #8ECFD7;
     height: 100%;
 }
 
@@ -224,7 +224,16 @@
 }
 
 .banner-enquete {
-    background-color: #8ECFD7;
+    background-color: #E1A493;
+}
+
+.pergunta {
+    display: flex;
+    height: 100vh; 
+    justify-content: center;
+    align-items: space-evenly;
+    flex-direction: column;
+
 }
 
 .banner-enquete .pergunta_box a {
@@ -237,5 +246,5 @@
 }
 
 .banner-enquete .pergunta_box_btn img {
-    height: 80px;
+    height: 200px;
 }

@@ -37,31 +37,43 @@ function addOption5() {
 
 
 function responder() {
-    var quiz = document.getElementById("quiz")
-    var perguntas = document.querySelectorAll(".pergunta")
-    var qtdPerguntas = quiz.children.length
-    var n = 0
+    fetch("/usuarios/cadastrar", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            // crie um atributo que recebe o valor recuperado aqui
+            // Agora vá para o arquivo routes/usuario.js
+            nomeServer: nomeVar,
+            emailServer: emailVar,
+            senhaServer: senhaVar,
+        })
+    }).then(function (resposta) {
 
-    if (contador < qtdPerguntas) {
+        console.log("resposta: ", resposta);
 
-        
-        while (n < perguntas.length) {
-            perguntas[n].classList.remove("active")
-            n++
+        if (resposta.ok) {
+            cardErro.style.display = "block";
+
+            mensagem_erro.innerHTML = "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
+
+            window.location = "cadastroLogin.html";
+            setTimeout(() => {
+            }, "2000")
+
+            limparFormulario();
+            finalizarAguardar();
+        } else {
+            throw ("Houve um erro ao tentar realizar o cadastro!");
         }
-        
-        quiz.children[contador].classList.add("active")
-        contador++
-    }else{
-        quiz.innerHTML = 
-        `
-            <div class="quizResult">
-                <h2 class="final">Votação finalizada</h2>
-                <p>Clique no botão abaixo para exibir os resultados</p>
-                <button class="finalizar" onclick="results()">Mostrar resultados</button>
-            </div>
-        `
-    }
+    }).catch(function (resposta) {
+        console.log(`#ERRO: ${resposta}`);
+        finalizarAguardar();
+    });
+    
+    results()
+    return false;
 }
 
 function results() {
