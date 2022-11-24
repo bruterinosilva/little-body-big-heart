@@ -32,12 +32,10 @@ check (album_votado = 'Dollhouse' or album_votado = 'Cry Baby' or album_votado =
 );
 
 select * from usuario;
+select count(distinct album_votado) from enquete;
+select album_votado, COUNT(album_votado) from enquete group by album_votado;
 
-SELECT count(album_votado) as 'Votos Cry Baby' from enquete where album_votado = 'Dollhouse'; 
-SELECT count(album_votado) from enquete where album_votado = 'Cry Baby';
-SELECT count(album_votado) from enquete where album_votado = 'Cry Baby Extra Clutter';
-SELECT count(album_votado) from enquete where album_votado = 'K-12';
-SELECT count(album_votado) from enquete where album_votado = 'After School';
+select * from enquete;
 
 select count(album_votado) from enquete;
 
