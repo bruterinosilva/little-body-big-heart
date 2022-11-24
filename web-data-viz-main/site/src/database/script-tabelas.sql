@@ -27,11 +27,21 @@ create table postagem (
 create table enquete (
 idEnquete int primary key auto_increment, 
 dtHora datetime default current_timestamp,
-qtd_votos_crybaby int,
-qtd_votos_k12 int,
-qtd_votos_after_school int,
-fkUsuario int,
-foreign key (fkUsuario) references usuario (idUsuario)
+album_votado varchar(45),
+check (album_votado = 'Dollhouse' or album_votado = 'Cry Baby' or album_votado = 'Cry Baby Extra Clutter' or album_votado = 'K-12' or album_votado = 'After School')
 );
 
 select * from usuario;
+
+SELECT count(album_votado) as 'Votos Cry Baby' from enquete where album_votado = 'Dollhouse'; 
+SELECT count(album_votado) from enquete where album_votado = 'Cry Baby';
+SELECT count(album_votado) from enquete where album_votado = 'Cry Baby Extra Clutter';
+SELECT count(album_votado) from enquete where album_votado = 'K-12';
+SELECT count(album_votado) from enquete where album_votado = 'After School';
+
+select count(album_votado) from enquete;
+
+INSERT INTO enquete VALUES 
+        (null, default, 'Cry Baby');
+select * from enquete;
+

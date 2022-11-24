@@ -1,10 +1,3 @@
-var Option1 = 0
-var Option2 = 0
-var Option3 = 0
-var Option4 = 0
-var Option5 = 0
-var contador = 1
-
 function startQuiz() {
     var initQuiz = document.getElementById("initQuiz")    
     var pergunta1 = document.getElementById("pergunta1")
@@ -15,29 +8,43 @@ function startQuiz() {
 
 
 function addOption1() {
-    Option1++
+    localStorage.setItem("respostaSelecionada", "Dollhouse");
     responder()
 }
 function addOption2() {
-    Option2++
+    localStorage.setItem("respostaSelecionada", "Cry Baby");
     responder()
 }
 function addOption3() {
-    Option3++
+    localStorage.setItem("respostaSelecionada", "Cry Baby Extra Clutter");
     responder()
 }
 function addOption4() {
-    Option4++
+    localStorage.setItem("respostaSelecionada", "K-12");
     responder()
 }
 function addOption5() {
-    Option5++
+    localStorage.setItem("respostaSelecionada", "After School");
     responder()
 }
 
 
 function responder() {
-    fetch("/usuarios/cadastrar", {
+    console.log(localStorage.getItem("respostaSelecionada"));
+    var opcaoSelecionada = ''
+    if (localStorage.getItem("respostaSelecionada") == 'Dollhouse') {
+        opcaoSelecionada = 'Dollhouse'
+    } else if (localStorage.getItem("respostaSelecionada") == 'Cry Baby'){
+        opcaoSelecionada = 'Cry Baby'
+    } else if (localStorage.getItem("respostaSelecionada") == 'Cry Baby Extra Clutter'){
+        opcaoSelecionada = 'Cry Baby Extra Clutter'
+    } else if (localStorage.getItem("respostaSelecionada") == 'K-12'){
+        opcaoSelecionada = 'K-12'
+    } else if (localStorage.getItem("respostaSelecionada") == 'After School'){
+        opcaoSelecionada = 'After School'
+    }
+    
+    fetch("/usuarios/inserirQuiz", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
@@ -45,77 +52,47 @@ function responder() {
         body: JSON.stringify({
             // crie um atributo que recebe o valor recuperado aqui
             // Agora vá para o arquivo routes/usuario.js
-            nomeServer: nomeVar,
-            emailServer: emailVar,
-            senhaServer: senhaVar,
+            // nomeServer: nomeVar,
+            respSelecionada: opcaoSelecionada
+            
         })
     }).then(function (resposta) {
 
         console.log("resposta: ", resposta);
 
         if (resposta.ok) {
-            cardErro.style.display = "block";
-
-            mensagem_erro.innerHTML = "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
-
-            window.location = "cadastroLogin.html";
-            setTimeout(() => {
-            }, "2000")
-
-            limparFormulario();
-            finalizarAguardar();
+            results()
         } else {
             throw ("Houve um erro ao tentar realizar o cadastro!");
         }
     }).catch(function (resposta) {
-        console.log(`#ERRO: ${resposta}`);
-        finalizarAguardar();
+        console.log(`#BATATA: ${resposta}`);
+        // finalizarAguardar();
     });
     
-    results()
+    // results()
     return false;
 }
 
-function results() {
-    quiz.innerHTML = 
-        `
-            <div class="resultsBox">
-                <h2 class="resultado">Resultado</h2>
-                <div class="metricasBox">
-                    <button value="${Option1}" id="Option1" class="metricas dollhouse">Dollhouse EP <br> ${Option1}</button>
-                    <button value="${Option2}" id="Option2" class="metricas crybaby">Cry Baby Album <br>${Option2}</button>
-                    <button value="${Option3}" id="Option3" class="metricas extra clutter">Cry Baby Extra Clutter EP <br>${Option3}</button>
-                    <button value="${Option4}" id="Option4" class="metricas k12">K-12 Album <br>${Option4}</button>
-                    <button value="${Option5}" id="Option5" class="metricas after school">After School EP: <br>${Option5}</button>
-        
-                </div>
-            </div>
-        
-        
-        `
-        var grafico = document.getElementById("grafico")
+function results(req, res) {
+   console.log('vou exibir o resultado agora');
+        // var grafico = document.getElementById("grafico")
 
-        grafico.classList.remove("inactive")
+        // grafico.classList.remove("inactive")
 
-        fetch("/usuarios/inserirQuiz", {
-            method: "POST",
+        fetch("/usuarios/exibirResultado", {
+            method: "GET",
             headers: {
                 "Content-Type": "application/json"
             },
-            body: JSON.stringify({
-                // crie um atributo que recebe o valor recuperado aqui
-                // Agora vá para o arquivo routes/usuario.js
-                Option1: Option1,
-                Option2: Option2,
-                Option3: Option3,
-                Option4: Option4,
-                Option5: Option5,
-            })
         }).then(function (resposta) {
 
-            console.log("resposta: ", resposta.body);
-
+            
             if (resposta.ok) {
+                console.log(res.json(resposta));
+                console.log("resposta: ", resposta.body);
+                res.json(resposta);
+            
         
             } else {
                 throw ("Houve um erro ao tentar realizar o cadastro!");
@@ -124,42 +101,42 @@ function results() {
             console.log(`#ERRO: ${resposta}`);
         });
 
-        const labels = [
-            'Dollhouse',
-            'Cry Baby',
-            'Cry Baby Extra Clutter',
-            'K-12',
-            'After School',
+        // const labels = [
+        //     'Dollhouse',
+        //     'Cry Baby',
+        //     'Cry Baby Extra Clutter',
+        //     'K-12',
+        //     'After School',
     
-        ];
+        // ];
     
-        const data = {
-            labels: labels,
-            datasets: [{
-                label: 'Quantidade de votos',
-                backgroundColor: [
-                'rgb(255, 74, 158)',
-                'rgb(85, 85, 255)',
-                'rgb(199, 0, 0)',
-                'rgb(5, 194, 5)',
-                'rgb(255, 117, 37)',
-            ],
-                borderColor: 'rgb(255, 99, 132)',
-                data: [Option1, Option2, Option3, Option4, Option5],
-            },
-        ]
-        };
+        // const data = {
+        //     labels: labels,
+        //     datasets: [{
+        //         label: 'Quantidade de votos',
+        //         backgroundColor: [
+        //         'rgb(255, 74, 158)',
+        //         'rgb(85, 85, 255)',
+        //         'rgb(199, 0, 0)',
+        //         'rgb(5, 194, 5)',
+        //         'rgb(255, 117, 37)',
+        //     ],
+        //         borderColor: 'rgb(255, 99, 132)',
+        //         data: [Option1, Option2, Option3, Option4, Option5],
+        //     },
+        // ]
+        // };
     
-        const config = {
-            type: 'bar',
-            data: data,
-            options: {}
-        };
+        // const config = {
+        //     type: 'bar',
+        //     data: data,
+        //     options: {}
+        // };
     
-        const myChart = new Chart(
-            document.getElementById('myChart'),
-            config
-        );
+        // const myChart = new Chart(
+        //     document.getElementById('myChart'),
+        //     config
+        // );
         
        
 
