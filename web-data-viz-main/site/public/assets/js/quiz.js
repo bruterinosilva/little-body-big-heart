@@ -66,7 +66,7 @@ function responder() {
             throw ("Houve um erro ao tentar realizar o cadastro!");
         }
     }).catch(function (resposta) {
-        console.log(`#BATATA: ${resposta}`);
+        console.log(`#ERRO: ${resposta}`);
         // finalizarAguardar();
     });
     

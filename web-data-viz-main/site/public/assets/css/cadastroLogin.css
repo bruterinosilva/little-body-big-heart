@@ -18,6 +18,9 @@ main {
     justify-content: space-between;
     align-items: center;
     position: relative;
+    -webkit-box-shadow: 0px 0px 35px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 0px 35px 0px rgba(0,0,0,0.75);
+    box-shadow: 0px 0px 35px 0px rgba(0,0,0,0.75);
 }
 .content::before {
     content: "";
@@ -40,7 +43,7 @@ main {
     color: #fff;
 }
 .title-second {
-    color: #8ECFD7;
+    color: #B15C4E;
 }
 .description {
     font-size: 14px;
@@ -73,17 +76,17 @@ main {
 }
 .btn-primary:hover {
     background-color: #fff;
-    color: #8ECFD7;
+    color: #B15C4E
 }
 .btn-second {
-    background-color: #8ECFD7;
-    border: 1px solid #8ECFD7;
+    background-color: #B15C4E;
+    border: 1px solid #B15C4E;
     transition: background-color .5s;
 }
 .btn-second:hover {
     background-color: #fff;
-    border: 1px solid #8ECFD7;
-    color: #8ECFD7;
+    border: 1px solid #B15C4E;
+    color: #B15C4E;
 }
 .first-content {
     display: flex;

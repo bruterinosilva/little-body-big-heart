@@ -13,7 +13,10 @@ body {
 .campo {
   background: #E1A493;
     padding: 20px 0;
-    border-radius: 60px 0px 60px 0px;
+    border-radius: 15px;
+    -webkit-box-shadow: 0px 0px 35px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 0px 35px 0px rgba(0,0,0,0.75);
+    box-shadow: 0px 0px 35px 0px rgba(0,0,0,0.75);
 }
 
 .dash-right .posts {
@@ -77,7 +80,7 @@ body {
 .dash-right .posts .campo button:hover {
   box-shadow: 0px 5px 5px 0px #8ECFD7;
   background: #B15C4E;
-  border: #ff2e51 solid 10px;
+  border: #B15C4E solid 10px;
   border-radius: 25px;
   width: 300px;
   cursor: pointer;
