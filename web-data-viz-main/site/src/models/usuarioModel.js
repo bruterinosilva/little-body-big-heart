@@ -54,10 +54,25 @@ function exibir_resultado() {
     return database.executar(instrucao);
 }
 
+function insert_quiz2 (respSelecionada) {
+    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function cadastrar():");
+
+    // Insira exatamente a query do banco aqui, lembrando da nomenclatura exata nos valores
+    //  e na ordem de inserção dos dados.
+    var instrucao = `
+    
+        INSERT INTO quiz VALUES 
+    (null, default, '${respSelecionada}');
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
+
 module.exports = {
     entrar,
     cadastrar,
     listar,
     insert_quiz,
-    exibir_resultado
+    exibir_resultado,
+    insert_quiz2
 };

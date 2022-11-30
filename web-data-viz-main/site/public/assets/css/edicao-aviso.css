@@ -29,8 +29,9 @@ body {
 .dash-right .posts .container {
     display: flex;
     align-items: center;
-    justify-content: space-around;
+    justify-content: center;
     width: 100%;
+    flex-direction: column;
 }
 
 .dash-right .posts .container .campo {

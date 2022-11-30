@@ -28,4 +28,8 @@ router.get("/exibirResultado", function (req, res) {
     usuarioController.exibir_resultado(req, res);
 });
 
+router.post("/inserirQuiz2", function (req, res) {
+    usuarioController.inserir_quiz2(req, res);
+});
+
 module.exports = router;
