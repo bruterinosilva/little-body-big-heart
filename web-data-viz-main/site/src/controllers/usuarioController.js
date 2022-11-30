@@ -140,11 +140,11 @@ function exibir_resultado(req, res) {
 }
 
 function inserir_quiz2(req, res) {
-    var respSelecionada = req.body.respSelecionada;
+    var questionsCorrect = req.body.questionsCorrect;
     
 
     // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
-    usuarioModel.insert_quiz2(respSelecionada)
+    usuarioModel.insert_quiz2(questionsCorrect)
     .then(
         function (resultado) {
             res.json(resultado);
