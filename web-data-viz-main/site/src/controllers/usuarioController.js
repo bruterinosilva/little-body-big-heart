@@ -119,13 +119,14 @@ function inserir_quiz(req, res) {
 
 function exibir_resultado(req, res) {
     
-    
-
     // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
     usuarioModel.exibir_resultado()
     .then(
         function (resultado) {
-            res.json(resultado);
+            // res.json(resultado);
+            res.status(200).json(resultado);
+            console.log('pao',resultado);
+
             }
         ).catch(
             function (erro) {
@@ -139,27 +140,7 @@ function exibir_resultado(req, res) {
         );
 }
 
-function inserir_quiz2(req, res) {
-    var questionsCorrect = req.body.questionsCorrect;
-    
 
-    // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
-    usuarioModel.insert_quiz2(questionsCorrect)
-    .then(
-        function (resultado) {
-            res.json(resultado);
-            }
-        ).catch(
-            function (erro) {
-                console.log(erro);
-                console.log(
-                    "\nHouve um erro ao realizar o cadastro! Erro: ",
-                    erro.sqlMessage
-                );
-                res.status(500).json(erro.sqlMessage);
-            }
-        );
-}
 
 module.exports = {
     entrar,
@@ -168,5 +149,4 @@ module.exports = {
     testar,
     inserir_quiz,
     exibir_resultado,
-    inserir_quiz2
 }

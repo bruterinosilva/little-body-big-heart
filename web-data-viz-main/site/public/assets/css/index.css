@@ -236,6 +236,13 @@
 
 }
 
+.pergunta h2 {
+    font-size: 35px;
+    color: #B15C4E;
+    margin-bottom: 100px;
+    margin-left: 30px;
+}
+
 .banner-enquete .pergunta_box a {
     cursor: pointer;
 }
@@ -247,4 +254,10 @@
 
 .banner-enquete .pergunta_box_btn img {
     height: 200px;
+}
+
+.grafico {
+    width: 800px;
+    margin: 0 auto;
+    padding-bottom: 30px;
 }

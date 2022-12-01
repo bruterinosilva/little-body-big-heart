@@ -1,8 +1,8 @@
 function startQuiz() {
-    var initQuiz = document.getElementById("initQuiz")    
+    var initQuiz = document.getElementById("initQuiz")
     var pergunta1 = document.getElementById("pergunta1")
-    
-    pergunta1.classList.add("active")    
+
+    pergunta1.classList.add("active")
     initQuiz.remove()
 }
 
@@ -34,16 +34,16 @@ function responder() {
     var opcaoSelecionada = ''
     if (localStorage.getItem("respostaSelecionada") == 'Dollhouse') {
         opcaoSelecionada = 'Dollhouse'
-    } else if (localStorage.getItem("respostaSelecionada") == 'Cry Baby'){
+    } else if (localStorage.getItem("respostaSelecionada") == 'Cry Baby') {
         opcaoSelecionada = 'Cry Baby'
-    } else if (localStorage.getItem("respostaSelecionada") == 'Cry Baby Extra Clutter'){
+    } else if (localStorage.getItem("respostaSelecionada") == 'Cry Baby Extra Clutter') {
         opcaoSelecionada = 'Cry Baby Extra Clutter'
-    } else if (localStorage.getItem("respostaSelecionada") == 'K-12'){
+    } else if (localStorage.getItem("respostaSelecionada") == 'K-12') {
         opcaoSelecionada = 'K-12'
-    } else if (localStorage.getItem("respostaSelecionada") == 'After School'){
+    } else if (localStorage.getItem("respostaSelecionada") == 'After School') {
         opcaoSelecionada = 'After School'
     }
-    
+
     fetch("/usuarios/inserirQuiz", {
         method: "POST",
         headers: {
@@ -54,7 +54,7 @@ function responder() {
             // Agora vá para o arquivo routes/usuario.js
             // nomeServer: nomeVar,
             respSelecionada: opcaoSelecionada
-            
+
         })
     }).then(function (resposta) {
 
@@ -69,31 +69,46 @@ function responder() {
         console.log(`#ERRO: ${resposta}`);
         // finalizarAguardar();
     });
-    
+
     // results()
     return false;
 }
 
 function results(req, res) {
-   console.log('vou exibir o resultado agora');
-        // var grafico = document.getElementById("grafico")
+    console.log('vou exibir o resultado agora');
+    // var grafico = document.getElementById("grafico")
+    var votos_dollhouse
+    var votos_crybaby
+    var votos_extraclutter
+    var votos_k12
+    var votos_afterschool
+    // grafico.classList.remove("inactive")
 
-        // grafico.classList.remove("inactive")
-
-        fetch("/usuarios/exibirResultado", {
-            method: "GET",
-            headers: {
-                "Content-Type": "application/json"
-            },
-        }).then(function (resposta) {
-
-            
+    fetch("/usuarios/exibirResultado", {
+        method: "GET",
+        headers: {
+            "Content-Type": "application/json"
+        },
+    })
+        .then(function (resposta) {
+            console.log(resposta);
+            resposta.json().then(function (resposta) {
+                console.log("Dados recebidos: ", JSON.stringify(resposta));
+                console.log('arroz',resposta);
+                votos_crybaby = resposta[0].quantidade_votos
+                votos_extraclutter = resposta[1].quantidade_votos
+                votos_k12 = resposta[2].quantidade_votos
+                votos_afterschool = resposta[3].quantidade_votos
+                votos_dollhouse = resposta[4].quantidade_votos
+                
+                console.log(votos_dollhouse, 'batata');
+                // finalizarAguardar();
+            });
             if (resposta.ok) {
                 console.log(res.json(resposta));
                 console.log("resposta: ", resposta.body);
                 res.json(resposta);
-            
-        
+
             } else {
                 throw ("Houve um erro ao tentar realizar o cadastro!");
             }
@@ -101,44 +116,46 @@ function results(req, res) {
             console.log(`#ERRO: ${resposta}`);
         });
 
-        // const labels = [
-        //     'Dollhouse',
-        //     'Cry Baby',
-        //     'Cry Baby Extra Clutter',
-        //     'K-12',
-        //     'After School',
-    
-        // ];
-    
-        // const data = {
-        //     labels: labels,
-        //     datasets: [{
-        //         label: 'Quantidade de votos',
-        //         backgroundColor: [
-        //         'rgb(255, 74, 158)',
-        //         'rgb(85, 85, 255)',
-        //         'rgb(199, 0, 0)',
-        //         'rgb(5, 194, 5)',
-        //         'rgb(255, 117, 37)',
-        //     ],
-        //         borderColor: 'rgb(255, 99, 132)',
-        //         data: [Option1, Option2, Option3, Option4, Option5],
-        //     },
-        // ]
-        // };
-    
-        // const config = {
-        //     type: 'bar',
-        //     data: data,
-        //     options: {}
-        // };
-    
-        // const myChart = new Chart(
-        //     document.getElementById('myChart'),
-        //     config
-        // );
-        
-       
+   setTimeout(() => {
+    const labels = [
+        'Cry Baby',
+        'Cry Baby Extra Clutter',
+        'K-12',
+        'After School',
+        'Dollhouse',
+
+    ];
+
+    const data = {
+        labels: labels,
+        datasets: [{
+            label: 'Quantidade de votos',
+            backgroundColor: [
+                'rgb(177, 92, 78)',
+                'rgb(142, 207, 215)',
+                'rgb(189, 104, 189)',
+                'rgb(236, 131, 163)',
+                'rgb(131, 211, 236)',
+            ],
+            borderColor: 'rgb(255, 99, 132)',
+            data: [votos_crybaby, votos_extraclutter, votos_k12, votos_afterschool, votos_dollhouse],
+        },
+        ]
+    };
+
+    const config = {
+        type: 'bar',
+        data: data,
+        options: {}
+    };
+
+    const myChart = new Chart(
+        document.getElementById('myChart'),
+        config
+    );
+   }, 500);
+
+
 
 
 }
