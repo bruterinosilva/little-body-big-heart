@@ -20,7 +20,7 @@
                 <ul>
                     <li><a href="index.html">Início</a></li>
                     <li><a href="artista.html">A artista</a></li>
-                    <li><a href="games.html">Games</a></li>
+
                     <li><a href="sobreMim.html">Sobre mim</a></li>
                     <li class="now"><a href="cadastroLogin.html">Entrar</a></li>
                 </ul>
@@ -47,22 +47,29 @@
                             </div>
                             <div class="second-column">
                                 <h2 class="title title-second">Crie sua conta!</h2>
+                                <div id="h2_aviso"></div>
                                 <form class="form">
                                     <label class="label-input" for="">
-                                        <input type="text" placeholder="Nome" id="input_cadastro_nome">
+                                        <input type="text" placeholder="Nome" id="input_cadastro_nome" maxlength="45">
+                                        <span id="campo_nome"></span>
                                     </label>
 
                                     <label class="label-input" for="">
-                                        <input type="email" placeholder="Email" id="input_cadastro_email">
+                                        <input type="email" placeholder="Email" id="input_cadastro_email"
+                                            maxlength="80">
+                                        <span id="campo_email"></span>
                                     </label>
 
                                     <label class="label-input" for="">
-                                        <input type="password" placeholder="Senha" id="input_cadastro_senha">
+                                        <input type="password" placeholder="Senha" id="input_cadastro_senha"
+                                            maxlength="16">
+                                        <span id="campo_senha"></span>
                                     </label>
 
                                     <label class="label-input" for="">
                                         <input type="password" placeholder=" Confirmação de Senha"
-                                            id="input_cadastro_confirmacao_senha">
+                                            id="input_cadastro_confirmacao_senha" maxlength="16">
+                                        <span id="campo_confirmacao_senha"></span>
                                     </label>
 
 
@@ -85,21 +92,23 @@
 
                                     <label class="label-input" for="">
                                         <i class="far fa-envelope icon-modify"></i>
-                                        <input type="email" placeholder="Email" id="input_login_email">
+                                        <input type="email" placeholder="Email" id="input_login_email" maxlength="80">
                                     </label>
 
                                     <label class="label-input" for="">
                                         <i class="fas fa-lock icon-modify"></i>
-                                        <input type="password" placeholder="Senha" id="input_login_senha">
+                                        <input type="password" placeholder="Senha" id="input_login_senha"
+                                            maxlength="16">
                                     </label>
 
-                                    <a class="password" href="#">Esqueceu sua senha?</a>
+
                                     <button class="btn btn-second" onclick="entrar()" type="button">Entrar</button>
+
                                 </form>
                             </div><!-- second column -->
                         </div><!-- second-content -->
                     </div>
-                    
+
         </section>
     </main>
 </body>
@@ -109,7 +118,6 @@
 <script>
     function cadastrar() {
         aguardar();
-
 
         //Recupere o valor da nova input pelo nome do id
         // Agora vá para o método fetch logo abaixo
@@ -121,38 +129,126 @@
 
         var confirmacaoVar = input_cadastro_confirmacao_senha.value;
 
-        if (nomeVar == "" || emailVar == "" || senhaVar == "" || confirmacaoVar == "") {
-            cardErro.style.display = "block"
-            mensagem_erro.innerHTML = "Por favor, preencha todos os campos para prosseguir.";
+        if (nomeVar == "" || emailVar == "", senhaVar == "" || confirmacaoVar == "") {
+            cardErro.style.display = "block";
+            h2_aviso.innerHTML = "Há campos em branco!";
 
-            finalizarAguardar();
-            return false;
-        } else {
-            setInterval(sumirMensagem, 5000)
-        }
-        if (emailVar.indexOf('@') == -1 || emailVar.indexOf('.com') == -1) {
-            //cardErro.style.display = 'block'
-            mensagem_erro.innerHTML =
-                'Ops, e-mail inválido! Por favor, insira tente novamente.'
-            finalizarAguardar()
-            return false
-        } else {
-            setInterval(sumirMensagem, 5000)
+            var valida_vazio = 0
         }
 
-        if (senhaVar != confirmacaoVar) {
-            //cardErro.style.display = 'block'
-            mensagem_erro.innerHTML =
-                'As senhas inseridas não coincidem!'
-            finalizarAguardar()
-            return false
+        var nome = input_cadastro_nome.value;
+        var nomeElement = input_cadastro_nome;
+        var valida_nome = 0;
+
+        if (nome.length < 2) {
+            nomeElement.classList.add("error")
+            nomeElement.classList.remove("confirmar")
+            campo_nome.style.color = "red"
+            campo_nome.innerHTML = "Nome inválido"
+            
+            valida_nome = 0;
         } else {
-            setInterval(sumirMensagem, 5000)
+            campo_nome.style.color = "green"
+            campo_nome.innerHTML = "Nome válido"
+            nomeElement.classList.remove("error")
+            nomeElement.classList.add("confirmar")
+
+            valida_nome = 1;
         }
 
+        // email
+
+        var email = input_cadastro_email.value.trim()
+        var emailElement = input_cadastro_email
+        var valida_email = 0;
+        /* Verificar se tem 6 caracteres ou mais no email antes do @*/
+        if (email.indexOf(" ") > 0) {
+            emailElement.classList.add("error")
+            emailElement.classList.remove("confirmar")
+            campo_email.style.color = "red"
+            campo_email.innerHTML = "Email inválido, retire os espaços!"
+
+            valida_email = 0;
+        } else if ((email.indexOf("@sptech.school") > 3 || email.indexOf("@gmail.com") > 3) && email.indexOf("@") > 3) {
+            campo_email.style.color = "green"
+            campo_email.innerHTML = "Email válido"
+            emailElement.classList.remove("error")
+            emailElement.classList.add("confirmar")
+
+            valida_email = 1;
+        } else {
+            emailElement.classList.add("error")
+            emailElement.classList.remove("confirmar")
+            campo_email.style.color = "red"
+            campo_email.innerHTML = "Email inválido"
+
+            valida_email = 0;
+        }
+
+        // senha
+
+        var senha = input_cadastro_senha.value
+        var senhaElement = input_cadastro_senha
+
+        var confirmacaoSenha = input_cadastro_confirmacao_senha.value
+        var confirmacaoSenhaElement = input_cadastro_confirmacao_senha
+        var valida_senha = 0;
+
+        /* validação da senha, se tem espaço no começo ou no fim */
+        if (senha.startsWith(" ") || senha.endsWith(" ")) {
+            campo_senha.style.color = "Red"
+            campo_senha.innerHTML = "A senha não pode começar nem terminar com um espaço"
+            senhaElement.classList.add("error")
+
+            valida_senha = 0;
+        } else { /* validação da senha, se tem 8 letras ou mais */
+            if (senha.length >= 8) {
+                senhaElement.classList.remove("error")
+                senhaElement.classList.add("confirmar")
+                campo_senha.style.color = "Green"
+                campo_senha.innerHTML = "(pelo menos 8 caracteres)"
+                /* Confirmar se a senha é igual nos dois campos*/
+                /*Veririfar se senha é igual com campo CONFIRMSENHA*/
+                valida_senha = 1;
+                if ((senha == confirmacaoSenha) && confirmacaoSenha.length >= 8) {
+                    confirmacaoSenhaElement.classList.remove("error")
+                    confirmacaoSenhaElement.classList.add("confirmar")
+                    campo_confirmacao_senha.style.color = "Green"
+                    campo_confirmacao_senha.innerHTML = "senha correta"
+                    valida_senha = 1;
+                } else {
+                    confirmacaoSenhaElement.classList.add("error")
+                    confirmacaoSenhaElement.classList.remove("confirmar")
+                    campo_confirmacao_senha.style.color = "Red"
+                    campo_confirmacao_senha.innerHTML = "senha incorreta"
+
+                    valida_senha = 0;
+                }
+            } else {
+                senhaElement.classList.remove("confirmar")
+                campo_senha.innerHTML = "(pelo menos 8 caracteres)"
+                campo_senha.style.color = "Red"
+                senhaElement.classList.add("error")
+
+                valida_senha = 0;
+            }
+
+            if (valida_senha == 1 && valida_nome == 1 && valida_email == 1) {
+                enviar_dados()
+            }
+        }
 
         // Enviando o valor da nova input
 
+    }
+    function enviar_dados() {
+        var nomeVar = input_cadastro_nome.value;
+
+        var emailVar = input_cadastro_email.value;
+
+        var senhaVar = input_cadastro_senha.value;
+
+        var confirmacaoVar = input_cadastro_confirmacao_senha.value;
         fetch("/usuarios/cadastrar", {
             method: "POST",
             headers: {
@@ -189,6 +285,7 @@
         });
 
         return false;
+
     }
 
     function aguardar() {

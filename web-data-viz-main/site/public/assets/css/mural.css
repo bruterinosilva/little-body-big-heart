@@ -31,6 +31,7 @@ body {
     align-items: center;
     justify-content: space-around;
     width: 100%;
+    margin-bottom: 70px;
 }
 
 .dash-right .posts .container .campo {
@@ -293,18 +294,6 @@ body {
   background-color: white;
   margin: 5px;
   border-radius: 3px;
-}
-
-footer {
-  background: #B15C4E;
-  padding: 1px 0;
-  bottom: 0;
-  width: 100%;
-  margin-top: 0px;
-}
-
-footer h2 {
-  color: #FFFFFF;
 }
 
 .footer_msg {

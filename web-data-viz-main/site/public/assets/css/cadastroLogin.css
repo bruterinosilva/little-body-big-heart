@@ -150,6 +150,8 @@ main {
     display: flex;
     align-items: center;
     margin: 8px;
+    position: relative;
+    margin-bottom: 10px;
 }
 .icon-modify {
     color: #7f8c8d;
@@ -178,6 +180,10 @@ main {
 }
 .password::first-letter {
     text-transform: capitalize;
+}
+
+#mensagem_erro {
+    color:#B15C4E;
 }
 
 .sign-in-js .first-content .first-column {
@@ -506,6 +512,31 @@ main {
     .form {
         width: 100%;
     }
+}
+
+.error {
+    border: red 2px solid !important ;
+    
+}
+
+#campo_nome, #campo_senha, #campo_email, #campo_confirmacao_senha {
+    color: red;
+    font-size: 12px;
+    position: absolute;
+    bottom: -20px;  
+}
+
+.confirmar {
+    border: green solid 2px !important; 
+}
+
+
+@media screen and (max-width: 1366px) {
+    .navegacao {
+        width: 390px;
+        color: #FFF;
+        margin-left: 24%;
+      }
 }
 
 
